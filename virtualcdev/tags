@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DEVICE_NAME	virtualcdev.c	16;"	d	file:
+GLOBALMEM_SIZE	virtualcdev.c	15;"	d	file:
+KERN_DIR	Makefile	/^KERN_DIR = \/opt\/workspace\/linux-3.2.0-psp04.06.00.10\/$/;"	m
+MEM_CLEAR	virtualcdev.c	18;"	d	file:
+VIRTUALCDEV_MAJOR	virtualcdev.c	17;"	d	file:
+cdev	virtualcdev.c	/^	struct cdev cdev; \/* cdev结构体 *\/$/;"	m	struct:virtualcdev_dev	typeref:struct:virtualcdev_dev::cdev	file:	access:public
+major	virtualcdev.c	/^static int major = VIRTUALCDEV_MAJOR;$/;"	v	file:
+mem	virtualcdev.c	/^	unsigned char mem[GLOBALMEM_SIZE]; \/* 全局内存 *\/$/;"	m	struct:virtualcdev_dev	file:	access:public
+virtualcdev_class	virtualcdev.c	/^static struct class *virtualcdev_class;$/;"	v	typeref:struct:class	file:
+virtualcdev_dev	virtualcdev.c	/^struct virtualcdev_dev$/;"	s	file:
+virtualcdev_dev::cdev	virtualcdev.c	/^	struct cdev cdev; \/* cdev结构体 *\/$/;"	m	struct:virtualcdev_dev	typeref:struct:virtualcdev_dev::cdev	file:	access:public
+virtualcdev_dev::mem	virtualcdev.c	/^	unsigned char mem[GLOBALMEM_SIZE]; \/* 全局内存 *\/$/;"	m	struct:virtualcdev_dev	file:	access:public
+virtualcdev_device	virtualcdev.c	/^struct device *virtualcdev_device;$/;"	v	typeref:struct:device
+virtualcdev_devp	virtualcdev.c	/^struct virtualcdev_dev *virtualcdev_devp; \/* 设备结构体指针 *\/$/;"	v	typeref:struct:virtualcdev_dev
+virtualcdev_exit	virtualcdev.c	/^module_exit(virtualcdev_exit);$/;"	v
+virtualcdev_exit	virtualcdev.c	/^static void __exit virtualcdev_exit(void)$/;"	f	file:	signature:(void)
+virtualcdev_fops	virtualcdev.c	/^static struct file_operations virtualcdev_fops = {$/;"	v	typeref:struct:file_operations	file:
+virtualcdev_init	virtualcdev.c	/^module_init(virtualcdev_init);$/;"	v
+virtualcdev_init	virtualcdev.c	/^static int __init virtualcdev_init(void)$/;"	f	file:	signature:(void)
+virtualcdev_ioctl	virtualcdev.c	/^static long virtualcdev_ioctl(struct inode *inodep, struct file *filp, unsigned int cmd, unsigned long arg)$/;"	f	file:	signature:(struct inode *inodep, struct file *filp, unsigned int cmd, unsigned long arg)
+virtualcdev_llseek	virtualcdev.c	/^static loff_t virtualcdev_llseek(struct file *filp, loff_t offset, int orig)$/;"	f	file:	signature:(struct file *filp, loff_t offset, int orig)
+virtualcdev_open	virtualcdev.c	/^static int virtualcdev_open(struct inode *inode, struct file *filp)$/;"	f	file:	signature:(struct inode *inode, struct file *filp)
+virtualcdev_read	virtualcdev.c	/^static ssize_t virtualcdev_read(struct file *filp, char __user *buf, size_t size, loff_t *ppos)$/;"	f	file:	signature:(struct file *filp, char __user *buf, size_t size, loff_t *ppos)
+virtualcdev_release	virtualcdev.c	/^static int virtualcdev_release(struct inode *inode, struct file *filp)$/;"	f	file:	signature:(struct inode *inode, struct file *filp)
+virtualcdev_write	virtualcdev.c	/^static ssize_t virtualcdev_write(struct file *filp, const char __user *buf, size_t size ,loff_t * ppos)$/;"	f	file:	signature:(struct file *filp, const char __user *buf, size_t size ,loff_t * ppos)
