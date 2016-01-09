@@ -176,6 +176,13 @@ void stop(int fd)
     }
 }
 
+void takePicture(int fd)
+{
+    MY_LOG("+");
+    read_frame(fd);
+    MY_LOG("-");
+}
+
 int closeCamera(int fd)
 {
     int n_buffers;
@@ -198,7 +205,7 @@ int main(void)
     initCamera(fd_cam);
     start(fd_cam);
     //sleep(10);
-    read_frame(fd_cam);
+    takePicture(fd_cam);
     stop(fd_cam);
     closeCamera(fd_cam);
     return 0;
