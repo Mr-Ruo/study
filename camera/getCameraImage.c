@@ -113,7 +113,7 @@ int initCamera(int fd)
     MY_LOG("+");
     memset(&fmt,0,sizeof(fmt));
     fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-    fmt.fmt.pix.width = 720;
+    fmt.fmt.pix.width = 640;
     fmt.fmt.pix.height = 480;
     fmt.fmt.pix.pixelformat = V4L2_PIX_FMT_YUYV;
     fmt.fmt.pix.field = V4L2_FIELD_INTERLACED;
