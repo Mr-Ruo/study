@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/mman.h>
+#include <sys/time.h>
 
 #define CAMERA_DEV "/dev/video0"
 #define ENABLE_MY_LOG (1)
@@ -23,9 +24,11 @@
 struct buffer{
     void* start;
     size_t length;
+    struct timeval timestamp; 
 };
 
 struct buffer* buffers=NULL;
+static int current_frame = 0;
 void saveBuffer(struct v4l2_buffer buf);
 
 //////////////////////////////////////////////////////////////////
@@ -48,7 +51,8 @@ static int read_frame(int fd)
     {
         MY_LOG("VIDIOC_DQBUF failed!\n");
     }
-
+    
+    current_frame = buf.index;
     saveBuffer(buf);
 
     if(-1 == ioctl(fd,VIDIOC_QBUF,&buf))
@@ -65,7 +69,7 @@ void saveBuffer(struct v4l2_buffer buf)
     int fd_image=open("1.yuv",O_RDWR | O_CREAT,10666);
     if(write(fd_image,buffers[index].start,buffers[index].length) > 0)
     {
-        MY_LOG("saving...\n");
+        MY_LOG("timestamp:%ld,index:%d,current_frame:%d,saving...\n",buffers[index].timestamp.tv_sec,index,current_frame);
     }
 
     close(fd_image);
@@ -143,7 +147,7 @@ int initCamera(int fd)
 
         buffers[n_buffers].length = buf.length;
         buffers[n_buffers].start = mmap(NULL,buf.length,PROT_READ | PROT_WRITE,MAP_SHARED,fd,buf.m.offset);
-
+        gettimeofday(&(buffers[n_buffers].timestamp),NULL);
         if(MAP_FAILED == buffers[n_buffers].start)
         {
             MY_LOG("memory map failed!\n");
@@ -190,6 +194,7 @@ int closeCamera(int fd)
         munmap(buffers[n_buffers].start,buffers[n_buffers].length);
     }
 
+    free(buffers);
     close(fd);
     return 0;
 }
